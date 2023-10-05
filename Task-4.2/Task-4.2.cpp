@@ -85,17 +85,16 @@ int main() {
             record << size << "\n";
 
 
-            for (int i = 1; i < size; ++i) {
-                std::string adress_line_0 = adress_arr[i].get_output_address();
-                std::string adress_line_1 = adress_arr[i - 1].get_output_address();
+            for (int j = 0; j < size; ++j) {
+                for (int i = 1; i < size; ++i) {
+                    std::string adress_line_i = adress_arr[i].get_output_address();
+                    std::string adress_line_i_minus_1 = adress_arr[i - 1].get_output_address();
 
-                char* str_0 = &adress_line_0[0];
-                char* str_1 = &adress_line_1[0];
+                    if (adress_line_i < adress_line_i_minus_1) {
+                        std::swap(adress_arr[i], adress_arr[i - 1]);
+                    }
 
-                if (strcmp(str_1, str_0) == 1) {
-                    std::swap(adress_arr[i], adress_arr[i - 1]);
                 }
-
             }
 
             for (int i = 0; i < size; ++i) {
